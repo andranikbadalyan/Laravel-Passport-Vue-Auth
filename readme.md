@@ -25,3 +25,7 @@
     </ul>
   </li>
 </ol>
+
+<h2>Screenshots:</h2>
+<p align="center"><img src="http://andranikbadalyan.com/laravelpassportvueauth/img/screenshot1.jpg"></p>
+<p align="center"><img src="http://andranikbadalyan.com/laravelpassportvueauth/img/screenshot2.jpg"></p>
