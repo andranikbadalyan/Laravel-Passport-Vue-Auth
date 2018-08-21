@@ -51280,7 +51280,7 @@ var actions = {
                 dispatch('userRequest');
                 resolve(access_token);
             }).catch(function (err) {
-                commit('authError', err.data);
+                commit('authError', err.response.data);
                 __WEBPACK_IMPORTED_MODULE_0_js_cookie___default.a.remove('access_token');
                 reject(err);
             });
@@ -51296,7 +51296,7 @@ var actions = {
                 commit('authLogout');
                 resolve();
             }).catch(function (err) {
-                commit('authError', err.data);
+                commit('authError', err.response.data);
                 reject(err);
             });
         });
@@ -51315,7 +51315,7 @@ var mutations = {
     authError: function authError(state, err) {
         state.status = 'error';
         state.hasLoadedOnce = true;
-        state.errors.record(err.errors);
+        state.errors.record(err);
     },
     authLogout: function authLogout(state) {
         state.access_token = '';

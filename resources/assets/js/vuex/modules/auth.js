@@ -56,7 +56,7 @@ const actions = {
                     resolve(access_token);
                 })
                 .catch((err) => {
-                    commit('authError', err.data);
+                    commit('authError', err.response.data);
                     Cookies.remove('access_token');
                     reject(err);
                 })
@@ -71,7 +71,7 @@ const actions = {
                     resolve();
                 })
                 .catch((err) => {
-                    commit('authError', err.data);
+                    commit('authError', err.response.data);
                     reject(err);
                 });
         })
@@ -90,7 +90,7 @@ const mutations = {
     authError: (state, err) => {
         state.status = 'error';
         state.hasLoadedOnce = true;
-        state.errors.record(err.errors);
+        state.errors.record(err);
     },
     authLogout: (state) => {
         state.access_token = '';
