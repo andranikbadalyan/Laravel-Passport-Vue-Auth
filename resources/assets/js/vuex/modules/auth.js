@@ -88,9 +88,14 @@ const mutations = {
         state.hasLoadedOnce = true;
     },
     authError: (state, err) => {
+        let errors=err.errors?err.errors:{};
+        if(err.error=="invalid_credentials"){
+            errors.invalid_credentials=['The user credentials were incorrect.'];
+        }
+
         state.status = 'error';
         state.hasLoadedOnce = true;
-        state.errors.record(err);
+        state.errors.record(errors);
     },
     authLogout: (state) => {
         state.access_token = '';

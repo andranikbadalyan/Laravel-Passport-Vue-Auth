@@ -51313,9 +51313,14 @@ var mutations = {
         state.hasLoadedOnce = true;
     },
     authError: function authError(state, err) {
+        var errors = err.errors ? err.errors : {};
+        if (err.error == "invalid_credentials") {
+            errors.invalid_credentials = ['The user credentials were incorrect.'];
+        }
+
         state.status = 'error';
         state.hasLoadedOnce = true;
-        state.errors.record(err);
+        state.errors.record(errors);
     },
     authLogout: function authLogout(state) {
         state.access_token = '';
@@ -51516,8 +51521,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
 
     computed: {
-        authStatus: function authStatus() {
-            return this.$store.getters.authStatus;
+        authErrors: function authErrors() {
+            return this.$store.getters.authErrors;
         }
     },
     methods: {
@@ -51561,10 +51566,13 @@ var render = function() {
           attrs: { src: "/img/logo.svg", alt: "", width: "300", height: "72" }
         }),
         _vm._v(" "),
-        _vm.authStatus == "error"
-          ? _c("p", { staticClass: "text-danger" }, [
-              _vm._v("The user credentials were incorrect.")
-            ])
+        _vm.authErrors.has("invalid_credentials")
+          ? _c("p", {
+              staticClass: "text-danger",
+              domProps: {
+                textContent: _vm._s(_vm.authErrors.get("invalid_credentials"))
+              }
+            })
           : _vm._e(),
         _vm._v(" "),
         _c("label", { staticClass: "sr-only", attrs: { for: "email" } }, [
@@ -51993,7 +52001,9 @@ var render = function() {
           }
         }),
         _vm._v(" "),
-        _vm.authErrors.any()
+        _vm.authErrors.has("name") ||
+        _vm.authErrors.has("email") ||
+        _vm.authErrors.has("password")
           ? _c(
               "div",
               {

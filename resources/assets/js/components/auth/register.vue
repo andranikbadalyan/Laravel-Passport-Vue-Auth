@@ -19,7 +19,7 @@
             <label for="password_confirmation" class="sr-only">Confirm Password</label>
             <input type="password" id="password_confirmation" class="form-control" placeholder="Password Confirmation" required v-model="password_confirmation">
 
-            <div class="alert alert-danger mt-3" role="alert" v-if="authErrors.any()">
+            <div class="alert alert-danger mt-3" role="alert" v-if="authErrors.has('name') || authErrors.has('email') || authErrors.has('password')">
                 <div v-text="authErrors.get('name')"></div>
                 <div v-text="authErrors.get('email')"></div>
                 <div v-text="authErrors.get('password')"></div>

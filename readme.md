@@ -14,7 +14,10 @@
   <li>
     Install passport clients: <strong>php artisan passport:install</strong>
     <ul>
-        <li>Copy the Client Secret in EVN variable VUE_CLIENT_ID</li>
+        <li>
+        Copy the Client Secret from <strong>Client ID: 2</strong> to your EVN variable VUE_CLIENT_ID<br>
+        <img src="http://andranikbadalyan.com/laravelpassportvueauth/img/screenshot3.jpg">
+        </li>
     </ul>
   </li>
   <li>run <strong>php artisan config:clear</strong></li>

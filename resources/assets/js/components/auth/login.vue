@@ -4,7 +4,7 @@
         <form method="POST" v-on:submit.prevent="login">
             <img class="mb-4" src="/img/logo.svg" alt="" width="300" height="72">
 
-            <p class="text-danger" v-if="authStatus=='error'">The user credentials were incorrect.</p>
+            <p class="text-danger" v-if="authErrors.has('invalid_credentials')" v-text="authErrors.get('invalid_credentials')"></p>
 
             <label for="email" class="sr-only">Email address</label>
             <input type="email" id="email" class="form-control" placeholder="Email address" required autofocus v-model="email">
@@ -39,8 +39,8 @@
             }
         },
         computed: {
-            authStatus(){
-                return this.$store.getters.authStatus;
+            authErrors(){
+                return this.$store.getters.authErrors;
             }
         },
         methods: {

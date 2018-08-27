@@ -28,13 +28,8 @@ class LoginController extends Controller
     {
         $accessToken = auth()->user()->token();
 
-        $refreshToken = DB::table('oauth_refresh_tokens')
-            ->where('access_token_id', $accessToken->id)
-            ->update([
-                'revoked' => true
-            ]);
-
-        $accessToken->revoke();
+        DB::table('oauth_access_tokens')->where('id', $accessToken->id)->delete();
+        DB::table('oauth_refresh_tokens')->where('access_token_id', $accessToken->id)->delete();
 
         return response()->json(['status' => 200]);
     }
