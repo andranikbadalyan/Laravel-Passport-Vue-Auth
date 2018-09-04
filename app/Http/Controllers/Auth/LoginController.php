@@ -21,6 +21,7 @@ class LoginController extends Controller
             'username' => $request->email,
             'password' => $request->password,
         ]);
+
         return app()->handle($request);
     }
 

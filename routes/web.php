@@ -41,7 +41,7 @@ Route::delete('oauth/clients/{client_id}', '\Laravel\Passport\Http\Controllers\C
 
 Route::post('oauth/personal-access-tokens', '\Laravel\Passport\Http\Controllers\PersonalAccessTokenController@store')->middleware('auth:api');
 Route::get('oauth/personal-access-tokens', '\Laravel\Passport\Http\Controllers\PersonalAccessTokenController@forUser')->middleware('auth:api');
-Route::delete('oauth/personal-access-tokens/{token_id}', '\Laravel\Passport\Http\Controllers\PersonalAccessTokenController@forUser')->middleware('auth:api');
+Route::delete('oauth/personal-access-tokens/{token_id}', '\Laravel\Passport\Http\Controllers\PersonalAccessTokenController@destroy')->middleware('auth:api');
 
 Route::get('oauth/scopes', '\Laravel\Passport\Http\Controllers\ScopeController@all')->middleware('auth:api');
 Route::post('oauth/token/refresh', '\Laravel\Passport\Http\Controllers\TransientTokenController@refresh')->middleware('auth:api');
