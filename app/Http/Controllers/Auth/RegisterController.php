@@ -37,7 +37,7 @@ class RegisterController extends Controller
     {
         return [
             'name' => 'required|string|max:80',
-            'email' => 'required|email',
+            'email' => 'required|email|unique:users',
             'password' => 'required|confirmed|min:6',
         ];
     }
