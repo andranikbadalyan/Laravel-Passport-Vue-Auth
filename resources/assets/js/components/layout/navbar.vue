@@ -15,7 +15,7 @@
                     <a class="nav-link dropdown-toggle" href="#" id="UserDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         {{user.name}}
                     </a>
-                    <div class="dropdown-menu" aria-labelledby="UserDropdown">
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="UserDropdown">
                         <a class="dropdown-item" href="#" @click.prevent="logout">Sign Out</a>
                     </div>
                 </li>
